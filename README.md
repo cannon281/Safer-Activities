@@ -15,9 +15,9 @@ This repository includes scripts for preprocessing videos to generate pickle fil
 
 Download the wheelchair keypoints dataset for human pose estimation through [this link](https://drive.google.com/file/d/1e6hAK0bHMI6P975IrIGWR7T1wC0HNLH6/view?usp=drive_link).
 
-Download samples from the SAFER Activities Dataset through [this link](https://drive.google.com/file/d/1k43qv3mzfPDO3ot09Rj6QFe13qdQs6Qr/view?usp=drive_link)
+Download samples from the SAFER Activities Dataset through [this link](https://drive.google.com/file/d/1k43qv3mzfPDO3ot09Rj6QFe13qdQs6Qr/view?usp=drive_link).
 
-Download the pickle files for training models using keypoint information through [this link](https://drive.google.com/file/d/1SHKJDlHRIG36eWcjQRplsNQ9jGWrxbMp/view?usp=drive_link)
+Download the pickle files for training models using keypoint information through [this link](https://drive.google.com/file/d/1SHKJDlHRIG36eWcjQRplsNQ9jGWrxbMp/view?usp=drive_link).
 
 Download example label visualizations on videos through [this link](https://drive.google.com/file/d/1tRL328B4cJWH3g8Re4prEsIJj8mK_YU9/view?usp=drive_link).
 
