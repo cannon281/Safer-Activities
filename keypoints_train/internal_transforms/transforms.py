@@ -59,45 +59,45 @@ class ScaleWithNeck(BaseTransform):
 
 class ScaleWithNeckMotion(BaseTransform):
     def __init__(self, image_width=1920):
-        self.image_width = image_width  # Set the normalization factor as the image width
+        self.image_width = image_width
 
     def __call__(self, keypoints):
         num_frames, num_joints, _ = keypoints.shape
-        
-        # Initialize a tensor to store the motion information
+
+        # Initialize tensors for motion information and scaled keypoints
         motion_info = torch.zeros_like(keypoints)
         scaled_keypoints = torch.zeros_like(keypoints)
-        
+
+        # Calculate motion information using original keypoints
+        for frame_idx in range(num_frames - 1):
+            current_frame = keypoints[frame_idx]
+            next_frame = keypoints[frame_idx + 1]
+
+            # Ensure neither frame is all zeros
+            if not torch.all(current_frame == 0) and not torch.all(next_frame == 0):
+                # Calculate raw motion difference, normalize by image width
+                motion_info[frame_idx] = (next_frame - current_frame) / self.image_width
+
+        # Apply scaling relative to neck position to keypoints
         for frame_idx in range(num_frames):
-            frame = keypoints[frame_idx]
-            if not torch.all(frame == 0):  # Apply transformation if frame is not all zeros
-                # Calculate neck coordinates
+            frame = keypoints[frame_idx].clone()  # Work on a clone to avoid modifying the original keypoints
+            if not torch.all(frame == 0):
                 neck_x = (frame[5, 0] + frame[6, 0]) / 2
                 neck_y = (frame[5, 1] + frame[6, 1]) / 2
 
-                # Scale coordinates relative to neck position
                 max_y, min_y = frame[:, 1].max(), frame[:, 1].min()
-                y_range = max_y - min_y if max_y - min_y > 0 else 1  # Prevent division by zero
-                
+                y_range = max_y - min_y if max_y - min_y > 0 else 1
+
                 frame[:, 0] = (frame[:, 0] - neck_x) / y_range
                 frame[:, 1] = (frame[:, 1] - neck_y) / y_range
 
-                # Store scaled frame back
-                scaled_keypoints[frame_idx] = frame  # Assume scaling logic is applied
+                scaled_keypoints[frame_idx] = frame
 
-                if frame_idx < num_frames - 1:
-                    next_frame = keypoints[frame_idx + 1]
-                    if not torch.all(next_frame == 0):
-                        # Calculate motion difference
-                        motion_info[frame_idx] = next_frame - frame
-        
-        # Normalize motion information
-        motion_info = motion_info / self.image_width  # Normalize to [-1, 1] range
-        
-        # Concatenate scaled keypoints with normalized motion information
+        # Concatenate scaled keypoints with motion information for augmentation
         augmented_keypoints = torch.cat((scaled_keypoints, motion_info), dim=-1)
-        
+
         return augmented_keypoints
+
 
 
 

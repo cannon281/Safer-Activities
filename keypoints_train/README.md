@@ -45,19 +45,18 @@ python test.py --config_path configs/CNN1D_kp.py --checkpoint_path work_dirs/CNN
 ### Saved Checkpoints
 
 Below are the checkpoints for our models. Click on the links to download the checkpoints. All the checkpoints and training logs can be found
-[here](https://drive.google.com/drive/folders/1C7rFeIwUzz5oYN21XorRQN79AtcIul2l?usp=drive_link). 
+[here](https://drive.google.com/drive/folders/1FQMkcwpDEKERniblIRIKN-yHYC8Yw_wo). 
 
-| Checkpoint File                | Google Drive Link                                                                 |
+<!-- | Checkpoint File                | Google Drive Link                                                                 |
 |--------------------------------|------------------------------------------------------------------------------------|
-| `CNN1D_kp.py`                  | [Download](https://drive.google.com/file/d/18bfylZZCBU7JkNjzAFkgkLWePHLvJLXs/view?usp=drive_link)|
-| `CNN1D_kp_view.py`             | [Download](https://drive.google.com/file/d/1NV4eWuQtbwjfBDZMpOhFnu5Nk25v0xli/view?usp=drive_link)|
+| `CNN1D_kp.py`                  | [Download](https://drive.google.com/file/d/1Q_e7-fkXK8viRL3CfROmLM8TUiIwm9qn/view?usp=drive_link)|
+| `CNN1D_kp_view.py`             | [Download](https://drive.google.com/file/d/1SJW3s143VOeSIrcMrO89smUmSN1sOL8S/view?usp=drive_link)|
 | `CNN1D_wc_kp.py`               | [Download](https://drive.google.com/file/d/1SFtWEroCxPXbfi5QnvIrEmNktGmBMqzF/view?usp=drive_link)|
 | `CNN1D_wc_kp_view.py`          | [Download](https://drive.google.com/file/d/17Qw3oUaPD6AC6lkkDR8z73TxMiKi0NPB/view?usp=drive_link)|
 | `Skip_CNN1D_kp.py`             | [Download](https://drive.google.com/file/d/1dAWjZIUKduDLJLo9qBDeHPxCODod6O-X/view?usp=drive_link)|
 | `Skip_CNN1D_kp_view.py`        | [Download](https://drive.google.com/file/d/1wFXsBDcPW5634x0WCsm6TT-xzehnakTO/view?usp=drive_link)|
 | `Skip_CNN1D_wc_kp.py`          | [Download](https://drive.google.com/file/d/1swgQ7Rpe2tlVK5nQbH5BDFg5EiaGLSz8/view?usp=drive_link)|
-| `Skip_CNN1D_wc_kp_view.py`     | [Download](https://drive.google.com/file/d/1P2s-c-Hug9U3ix2bD8Cx_X42iRDsrLFg/view?usp=drive_link)|
-
+| `Skip_CNN1D_wc_kp_view.py`     | [Download](https://drive.google.com/file/d/1P2s-c-Hug9U3ix2bD8Cx_X42iRDsrLFg/view?usp=drive_link)| -->
 
 
 ### Data and Dataset Configuration

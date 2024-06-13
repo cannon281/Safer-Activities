@@ -1,0 +1,267 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "SAFER-Activities",
+  "description": "The SAFER-Activities dataset comprises data for activity recognition, including a separate subset for wheelchair users. It includes videos alongside CSVs with labels and extracted pose data and bounding boxes stored in pickle files.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "license": "Creative Commons Attribution Non Commercial Share Alike 4.0",
+  "url": "https://github.com/cannon281/Safer-Activities",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "github-repository",
+      "name": "github-repository",
+      "description": "Hosted files including videos and CSVs with annotations, along with the pickle files with extractedpose skeletons and bounding boxes for each video",
+      "contentUrl": "https://github.com/cannon281/Safer-Activities",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "drive-video-csv",
+      "name": "Videos and CSVs",
+      "description": "Dataset containing the videos of people performing various actions and corresponding CSVs with start and end times for actions.",
+      "contentUrl": "https://drive.google.com/file/d/1k43qv3mzfPDO3ot09Rj6QFe13qdQs6Qr/view",
+      "encodingFormat": "video/csv",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "drive-pickle-files",
+      "name": "Pickle Files",
+      "description": "Pickle files containing extracted pose skeleton and bounding boxes.",
+      "contentUrl": "https://drive.google.com/file/d/1SHKJDlHRIG36eWcjQRplsNQ9jGWrxbMp/view",
+      "encodingFormat": "application/pickle",
+      "sha256": "main"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "videos-csvs",
+      "name": "Videos and CSVs",
+      "description": "The videos containing people performing various actions and corresponding CSVs with start and end times for actions.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "Videos/*.mp4",
+          "name": "Videos/*.mp4",
+          "description": "List of videos from the dataset.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-video-csv"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "CSVs/*.csv",
+          "name": "CSVs/*.csv",
+          "description": "List of CSVs with the ground truth.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-video-csv"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "dataset-splits",
+      "name": "Dataset Splits",
+      "description": "Train, test, subject-wise and view-wise splits.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "split/sub_train",
+          "name": "Subject-wise training set",
+          "description": "List of files or indices for the training set on the subject split.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "sub_train"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "split/sub_test",
+          "name": "Subject-wise test set",
+          "description": "List of files or indices for the test set on the subject split.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "sub_test"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "split/view_train",
+          "name": "View-wise training set",
+          "description": "List of files or indices for the training set on the view split.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "view_train"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "split/view_test",
+          "name": "View-wise test set",
+          "description": "List of files or indices for the test set on the view split.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "view_test"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "extracted-pose-data",
+      "name": "Extracted Pose Data",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "annotations/labels",
+          "name": "Per-frame Labels",
+          "description": "List of labels for every frame in the video/annotation.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "label"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "annotations/keypoint",
+          "name": "Keypoints",
+          "description": "Keypoint data for each frame in the video.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "keypoint"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "annotations/keypoint_score",
+          "name": "Keypoint Scores",
+          "description": "Keypoint score for each corresponding keypoint data.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "keypoint_score"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "annotations/bbox",
+          "name": "Bounding Boxes",
+          "description": "Bounding box data for each frame in the video.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "bbox"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "annotations/img_shape",
+          "name": "Image Shape",
+          "description": "Shape of the frame used to extract the keypoints and bounding boxes. Necessary for co-ordinate transforms",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "drive-pickle-files"
+            },
+            "extract": {
+              "column": "img_shape"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
