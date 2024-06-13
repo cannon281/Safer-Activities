@@ -1,0 +1,3 @@
+[submodule "inference/pyskl"]
+	path = inference/pyskl
+	url = https://github.com/cannon281/pyskl.git
