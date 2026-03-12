@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 import torch
-from tools.process_video import infer_imvia_dataset, infer_leuven_dataset, process_one_video
+from tools.process_video import infer_imvia_dataset, process_one_video
 from tools.model_setup import load_model_with_transforms
 from tools.src.vitpose_infer.main import VitInference
 import os

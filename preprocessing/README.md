@@ -39,5 +39,11 @@ After adjusting labels, rerun `combine_pkls.py` and `add_split_to_raw.py` to upd
 
 ## Final Output
 
-The final output (`aic_normal_dataset.pkl` or `aic_wheelchair_dataset.pkl`) contains the processed dataset ready for training models.
+The final output (`aic_normal_dataset.pkl` or `aic_wheelchair_dataset.pkl`) contains the processed dataset with 2D keypoints, ready for training skeleton-based models.
+
+## Next Steps
+
+- **1D-CNN training** — Use the output pkl files directly with `keypoints_train/`
+- **3D pose lifting** — To generate 3D keypoints for GCN models (DG-STGCN, MSG3D, STGCN++), see `preprocessing/3d_pose_lifting/`
+- **RGB feature extraction** — To extract CLIP/DINOv3/VideoMAE features, see `rgb/feature_extraction/`
 

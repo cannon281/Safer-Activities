@@ -12,4 +12,4 @@ docker run -it --rm -e PLATFORM=$ENV_PLATFORM --name $NAME \
     $FWD_DISPLAY \
     -v $MAIN_DIR:/home/work \
     $NAME:latest \
-    bash
+    bash -c "cd /home/work/inference/pyskl && pip install --no-deps -e . > /dev/null 2>&1 && cd /home/work && exec bash"

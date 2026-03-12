@@ -23,10 +23,14 @@ RUN pip install --no-cache-dir --default-timeout=100 \
 
 RUN pip install --no-cache-dir deep_sort_realtime
 
-# Dependacies for pyskl
+# Dependencies for pyskl
 RUN pip install --no-cache-dir -U openmim
 RUN mim install mmcv==1.5.0
-RUN pip install --no-cache-dir fvcore==0.1.5.post20221221
+RUN pip install --no-cache-dir fvcore==0.1.5.post20221221 yapf
+
+# Dependencies for RGB feature extraction (CLIP, DINOv3, VideoMAE)
+RUN pip install --no-cache-dir transformers Pillow
+RUN pip install --no-cache-dir git+https://github.com/openai/CLIP.git
 
 # Set the working directory
 WORKDIR /home/work

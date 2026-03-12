@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     # Define paths and settings
     config_path = "pyskl/configs/posec3d/safer_activity_xsub/non-wheelchair.py"
-    pkl_path = "../keypoints_train/data/aicactivity/normal/aic_normal_dataset.pkl"
+    pkl_path = "../keypoints_train/data/aicactivity/normal/aic_normal_dataset.pkl"  # or aic_normal_dataset_with_3d.pkl
     weight_path = "pyskl/weights/epoch_32.pth"
     label_from = "center"
     window_size = 48

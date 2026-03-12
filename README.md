@@ -24,31 +24,28 @@
   </tr>
 </table>
 
-Source for non-wheelchair falls: [FailArmy YouTube Channel](https://www.youtube.com/@failarmy)  
+Source for non-wheelchair falls: [FailArmy YouTube Channel](https://www.youtube.com/@failarmy)
 Source for wheelchair fall: [YouTube Video](https://www.youtube.com/watch?v=tL34DvqCVNs)
 
 This repository includes scripts for preprocessing videos to generate pickle files and training.
 
 Download the wheelchair keypoints dataset for human pose estimation through [this link](https://drive.google.com/file/d/1e6hAK0bHMI6P975IrIGWR7T1wC0HNLH6/view?usp=drive_link).
 
-Download samples from the SAFER Activities Dataset through [this link](https://drive.google.com/file/d/1k43qv3mzfPDO3ot09Rj6QFe13qdQs6Qr/view?usp=drive_link).
-
-Download the pickle files for training models using keypoint information through [this link](https://drive.google.com/file/d/17EP2hEKgkeMAPEF_Gx1b4T7uiMs-fMcT/view?usp=drive_link).
+Download the pickle files for training models using keypoint information through [this link](https://drive.google.com/file/d/10eY5oPk-LOqwCM2e1uRqGMsKDpxOL00_/view?usp=drive_link).
 
 Download example label visualizations on videos through [this link](https://drive.google.com/file/d/1tRL328B4cJWH3g8Re4prEsIJj8mK_YU9/view?usp=drive_link).
 
-
 ## Repository Structure
 
-The repository is organized into three main folders:
-
-- `preprocessing`: Contains code for preprocessing videos to generate pickle files with keypoints. We used the ViTPose-h-multi and Yolov8x models for our preprocessing. 
-
-- `keypoints_train`: Contains code to train our Simple-1D-CNN. This folder includes all necessary scripts to start the training process and evaluate the model's performance on our dataset.
-
-- `inference`: Contains code to run inference, as well as run evalation on the SAFER-Activities test set. Additionally includes evaluation code to run inference on other realistic fall datasets.
-
-- `docker`: Includes a `Dockerfile` and `run_container.sh` script.
+- `preprocessing/` — Generate pickle files with 2D keypoints from raw videos (YOLOv8x + ViTPose-H)
+- `preprocessing/3d_pose_lifting/` — Lift 2D keypoints to 3D using MotionAGFormer
+- `keypoints_train/` — Train and evaluate skeleton-based models (1D-CNN)
+- `inference/pyskl/` — Train and evaluate GCN-based skeleton models (DG-STGCN, MSG3D, STGCN++, PoseC3D) with 2D and 3D pose
+- `rgb/feature_extraction/` — Extract bbox-cropped clips and frozen CLIP, DINOv3, and VideoMAE features
+- `rgb/training/` — Train and evaluate RGB-only and multimodal fusion models (5 fusion strategies x 3 backbones)
+- `rgb/external_eval/` — Cross-dataset evaluation on ImViA fall detection dataset (RGB & fusion models)
+- `inference/` — Sliding-window inference and evaluation on the SAFER-Activities test sets, including external fall datasets
+- `docker/` — Dockerfile and container run scripts
 
 ## License
 

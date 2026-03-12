@@ -19,7 +19,7 @@ from utils.dataset_utils import get_majority_labels
 # Config
 # --------------------------------------------------------------------------------------------------------------------------------------------
 parser = argparse.ArgumentParser(description='Infer Action Classification')
-parser.add_argument('--pkl_path', type=str, default="../keypoints_train/data/aicactivity/normal/aic_normal_dataset.pkl")
+parser.add_argument('--pkl_path', type=str, default="../keypoints_train/data/aicactivity/normal/aic_normal_dataset.pkl")  # or aic_normal_dataset_with_3d.pkl
 parser.add_argument('--config_path', type=str, default="pyskl/configs/posec3d/safer_activity_xsub/non-wheelchair.py")
 parser.add_argument('--weight_path', type=str, default="pyskl/weights/posec3d/non-wheelchair/non-wheelchair-epoch_44.pth")
 parser.add_argument('--label_from', type=str, default = "center")
